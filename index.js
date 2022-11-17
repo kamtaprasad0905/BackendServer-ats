@@ -10,7 +10,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.use("/", routes);
 connection();
 
