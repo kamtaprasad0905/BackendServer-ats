@@ -27,13 +27,11 @@ const getEmployeeById = async (req, res) => {
   }
 };
 const editEmployeeById = async (req, res) => {
-  const employeeData = req.body;
+  const { first_name, last_name, email, designation, state, city } = req.body;
 
-  const editEmployee = new employee(employeeData);
   try {
-    await employee.updateOne({ _id: req.params.id }, editEmployee);
-    res.status(201).json(editEmployee);
-    // console.log(editEmployee);
+    await employee.updateOne({ _id: req.params.id }, { first_name, last_name, email, designation, state, city });
+    res.status(201).json(req.body);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
